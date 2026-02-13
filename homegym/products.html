@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สินค้า - Homegym</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="products.css">
+</head>
+<body>
+    <!-- Header with Logo -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">💪🏋️‍♂️🏆</div>
+            <div class="logo-text">
+                <span class="logo-jazz">Home</span>
+                <span class="logo-kunl">gym</span>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="navigation">
+            <a href="index.html" class="nav-link">หน้าแรก</a>
+            <a href="products.html" class="nav-link active">สินค้า</a>
+            <a href="workout.html" class="nav-link">สอนออกกำลังกาย</a>
+            <a href="contact.html" class="nav-link">ติดต่อ</a>
+        </nav>
+
+        <!-- Shopping Cart Icon -->
+        <div class="cart-icon" onclick="toggleCart()">
+            🛒 <span class="cart-count" id="cartCount">0</span>
+        </div>
+    </header>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>ตะกร้าสินค้า 🛒</h3>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        
+        <!-- Cart Tabs -->
+        <div class="cart-tabs">
+            <button class="cart-tab active" data-tab="cart">ตะกร้า</button>
+            <button class="cart-tab" data-tab="checkout">ชำระเงิน</button>
+        </div>
+        
+        <!-- Cart Items Tab -->
+        <div class="cart-tab-content active" id="cartTab">
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be populated here -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>รวมทั้งหมด:</span>
+                    <span class="total-amount" id="cartTotal">฿0</span>
+                </div>
+                <button class="checkout-btn" onclick="showCheckoutTab()">ไปชำระเงิน</button>
+                <button class="clear-cart-btn" onclick="clearCart()">ล้างตะกร้า</button>
+            </div>
+        </div>
+        
+        <!-- Checkout Tab -->
+        <div class="cart-tab-content" id="checkoutTab">
+            <div class="checkout-form">
+                <h4>ข้อมูลการจัดส่ง</h4>
+                
+                <div class="form-group">
+                    <label for="customerName">ชื่อ-นามสกุล *</label>
+                    <input type="text" id="customerName" placeholder="กรุณากรอกชื่อ-นามสกุล" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerPhone">เบอร์โทรศัพท์ *</label>
+                    <input type="tel" id="customerPhone" placeholder="กรุณากรอกเบอร์โทรศัพท์" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerEmail">อีเมล</label>
+                    <input type="email" id="customerEmail" placeholder="กรุณากรอกอีเมล (ไม่บังคับ)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="deliveryAddress">ที่อยู่จัดส่ง *</label>
+                    <textarea id="deliveryAddress" rows="3" placeholder="กรุณากรอกที่อยู่จัดส่ง" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="deliveryNote">หมายเหตุ</label>
+                    <textarea id="deliveryNote" rows="2" placeholder="หมายเหตุเพิ่มเติม (ไม่บังคับ)"></textarea>
+                </div>
+                
+                <h4>วิธีการชำระเงิน</h4>
+                
+                <div class="payment-methods">
+                    <div class="payment-method">
+                        <input type="radio" id="paymentCash" name="paymentMethod" value="cash" checked>
+                        <label for="paymentCash">
+                            <span class="payment-icon">💵</span>
+                            เงินสด (เก็บเงินปลายทาง)
+                        </label>
+                    </div>
+                    
+                    <div class="payment-method">
+                        <input type="radio" id="paymentTransfer" name="paymentMethod" value="transfer">
+                        <label for="paymentTransfer">
+                            <span class="payment-icon">🏦</span>
+                            โอนเงินผ่านธนาคาร
+                        </label>
+                    </div>
+                    
+                    <div class="payment-method">
+                        <input type="radio" id="paymentPromptPay" name="paymentMethod" value="promptpay">
+                        <label for="paymentPromptPay">
+                            <span class="payment-icon">📱</span>
+                            PromptPay
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="checkout-summary">
+                    <div class="summary-row">
+                        <span>ราคาสินค้า:</span>
+                        <span id="summarySubtotal">฿0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>ค่าจัดส่ง:</span>
+                        <span id="summaryShipping">฿50</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>รวมทั้งหมด:</span>
+                        <span id="summaryTotal">฿0</span>
+                    </div>
+                </div>
+                
+                
+                <div class="checkout-actions">
+                    <button class="back-to-cart-btn" onclick="showCartTab()">กลับไปตะกร้า</button>
+                    <button class="place-order-btn" onclick="placeOrder()">สั่งซื้อเลย</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">สินค้าและอุปกรณ์</h1>
+                <p class="hero-subtitle">ร้านอุปกรณ์ออกกำลังกายครบวงจร สำหรับสายฟิตเนส ✨</p>
+                <div class="hero-decoration">
+                    <span class="decoration-line">🏋️‍♂️</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Categories -->
+        <div class="menu-container">
+            <!-- อุปกรณ์กีฬา -->
+            <section class="menu-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="section-icon">🏋️‍♂️</span>
+                        อุปกรณ์ออกกำลังกาย 
+                    </h2>
+                    <p class="section-description">อุปกรณ์ออกกำลังกายสุดพรีเมี่ยม</p>
+                </div>
+                
+                <div class="product-grid six-cols">
+
+    <!-- 1. ดัมเบล -->
+    <article class="product-card" data-id="dumbbell-set" data-name="ชุดดัมเบลปรับน้ำหนัก" data-price="200" data-image="images/dumbbell.webp">
+        <div class="product-image">
+            <img src="images/dumbbell.webp" alt="ชุดดัมเบลปรับน้ำหนัก" class="product-img">
+            <div class="product-badge">Signature</div>
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">ชุดดัมเบลปรับน้ำหนัก</h3>
+            <p class="product-description">ชุดดัมเบลปรับน้ำหนักได้ เหมาะสำหรับฝึกกล้ามเนื้อทุกส่วน</p>
+            <div class="product-price">฿200</div>
+            
+            <!-- วัสดุ / วิธีใช้งาน -->
+            <ul class="product-detail">
+            <li><strong>วัสดุ:</strong> แผ่นน้ำหนักเหล็กเคลือบกันสนิม ด้ามจับเหล็กชุบโครเมียม หุ้มยางกันลื่น</li>
+            <li><strong>วิธีใช้งาน:</strong> ปรับแผ่นน้ำหนักตามต้องการ จับดัมเบลให้มั่นคง แล้วออกกำลังกายตามท่าที่เหมาะสม เช่น หน้าอก แขน ไหล่ และหลัง</li>
+            </ul>
+            <div class="order-count">
+                <span class="order-count-icon">🔥</span>
+                <span class="order-count-text">สั่งซื้อแล้ว 15 ครั้ง</span>
+            </div>
+            <div class="product-actions">
+                <div class="quantity-controls">
+                    <button class="qty-btn minus" onclick="updateQuantity('dumbbell-set', -1)">-</button>
+                    <span class="quantity" id="dumbbell-set-qty">0</span>
+                    <button class="qty-btn plus" onclick="updateQuantity('dumbbell-set', 1)">+</button>
+                </div>
+                <button class="add-to-cart-btn" onclick="addToCart('dumbbell-set','ชุดดัมเบลปรับน้ำหนัก',2500,'images/dumbbell.webp')">
+                    เพิ่มลงตะกร้า
+                </button>
+            </div>
+        </div>
+        
+    </article>
+
+    <!-- 2. ยางยืดออกกำลังกาย -->
+    <article class="product-card" data-id="resistance-band" data-name="ยางยืดออกกำลังกาย" data-price="120" data-image="images/resistance-band.jpg">
+        <div class="product-image">
+            <img src="images/resistance-band.jpg" alt="ยางยืดออกกำลังกาย" class="product-img">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">ยางยืดออกกำลังกาย</h3>
+            <p class="product-description">ใช้ฝึกกล้ามเนื้อ ยืดเหยียด และกายภาพบำบัด</p>
+            <div class="product-price">฿120</div>
+
+            <!-- วัสดุ / วิธีใช้งาน -->
+<ul class="product-detail">
+    <li><strong>วัสดุ:</strong> ยางลาเท็กซ์คุณภาพสูง ยืดหยุ่นดี แข็งแรง ทนทาน ไม่ขาดง่าย</li>
+    <li><strong>วิธีใช้งาน:</strong> เลือกระดับแรงต้านที่เหมาะสม จับยางให้มั่นคง แล้วดึงหรือยืดตามท่าออกกำลังกาย เช่น แขน ไหล่ ขา และหน้าท้อง</li>
+</ul>
+
+            <div class="product-actions">
+                <div class="quantity-controls">
+                    <button class="qty-btn minus" onclick="updateQuantity('resistance-band', -1)">-</button>
+                    <span class="quantity" id="resistance-band-qty">0</span>
+                    <button class="qty-btn plus" onclick="updateQuantity('resistance-band', 1)">+</button>
+                </div>
+                <button class="add-to-cart-btn" onclick="addToCart('resistance-band','ยางยืดออกกำลังกาย',450,'images/resistance-band.jpg')">
+                    เพิ่มลงตะกร้า
+                </button>
+            </div>
+        </div>
+    </article>
+
+    <!-- 3. แผ่นโยคะ -->
+    <article class="product-card" data-id="yoga-mat" data-name="แผ่นโยคะ" data-price="160" data-image="images/yoga-mat.jpg">
+        <div class="product-image">
+            <img src="images/yoga-mat.jpg" alt="แผ่นโยคะ" class="product-img">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">แผ่นโยคะ</h3>
+            <p class="product-description">แผ่นโยคะกันลื่น หนา 6 มม.</p>
+            <div class="product-price">฿160</div>
+
+            <!-- วัสดุ / วิธีใช้งาน -->
+<ul class="product-detail">
+    <li><strong>วัสดุ:</strong> ยาง TPE คุณภาพสูง กันลื่น นุ่ม รองรับแรงกดทับ ไม่ระคายผิว</li>
+    <li><strong>วิธีใช้งาน:</strong> ปูแผ่นโยคะบนพื้นเรียบ ใช้สำหรับฝึกโยคะ ยืดเหยียด ออกกำลังกาย หรือคูลดาวน์หลังการฝึก</li>
+</ul>
+
+            <div class="product-actions">
+                <div class="quantity-controls">
+                    <button class="qty-btn minus" onclick="updateQuantity('yoga-mat', -1)">-</button>
+                    <span class="quantity" id="yoga-mat-qty">0</span>
+                    <button class="qty-btn plus" onclick="updateQuantity('yoga-mat', 1)">+</button>
+                </div>
+                <button class="add-to-cart-btn" onclick="addToCart('yoga-mat','แผ่นโยคะ',800,'images/yoga-mat.jpg')">
+                    เพิ่มลงตะกร้า
+                </button>
+            </div>
+        </div>
+    </article>
+
+    <!-- 4. ลู่วิ่งไฟฟ้า -->
+    <article class="product-card" data-id="treadmill" data-name="ลู่วิ่งไฟฟ้า" data-price="25000" data-image="images/treadmill.jpg">
+        <div class="product-image">
+            <img src="images/treadmill.jpg" alt="ลู่วิ่งไฟฟ้า" class="product-img">
+            <div class="product-badge">Popular</div>
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">ลู่วิ่งไฟฟ้า</h3>
+            <p class="product-description">เหมาะสำหรับคาร์ดิโอและลดน้ำหนัก</p>
+            <div class="product-price">฿25000</div>
+
+            <!-- วัสดุ / วิธีใช้งาน -->
+<ul class="product-detail">
+    <li><strong>วัสดุ:</strong> โครงเหล็กแข็งแรง สายพานวิ่งแบบกันลื่น มอเตอร์ไฟฟ้ามาตรฐาน</li>
+    <li><strong>วิธีใช้งาน:</strong> เสียบปลั๊ก เปิดเครื่อง เลือกความเร็วหรือโปรแกรมที่ต้องการ เหมาะสำหรับเดิน วิ่ง หรือออกกำลังกายในบ้าน</li>
+</ul>
+
+            <div class="product-actions">
+                <div class="quantity-controls">
+                    <button class="qty-btn minus" onclick="updateQuantity('treadmill', -1)">-</button>
+                    <span class="quantity" id="treadmill-qty">0</span>
+                    <button class="qty-btn plus" onclick="updateQuantity('treadmill', 1)">+</button>
+                </div>
+                <button class="add-to-cart-btn" onclick="addToCart('treadmill','ลู่วิ่งไฟฟ้า',15000,'images/treadmill.jpg')">
+                    เพิ่มลงตะกร้า
+                </button>
+            </div>
+        </div>
+    </article>
+
+    <!-- 5. เชือกกระโดด -->
+    <article class="product-card" data-id="jump-rope" data-name="เชือกกระโดด" data-price="100" data-image="images/jump-rope.jpg">
+        <div class="product-image">
+            <img src="images/jump-rope.jpg" alt="เชือกกระโดด" class="product-img">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">เชือกกระโดด</h3>
+            <p class="product-description">เสริมความฟิต เผาผลาญไขมัน</p>
+            <div class="product-price">฿100</div>
+
+            <!-- วัสดุ / วิธีใช้งาน -->
+<ul class="product-detail">
+    <li><strong>วัสดุ:</strong> เชือก PVC คุณภาพสูง ด้ามจับพลาสติกหุ้มยางกันลื่น แข็งแรงทนทาน</li>
+    <li><strong>วิธีใช้งาน:</strong> ปรับความยาวเชือกให้เหมาะกับส่วนสูง จับด้ามทั้งสองข้าง กระโดดให้เชือกหมุนผ่านใต้เท้า เหมาะสำหรับคาร์ดิโอและเผาผลาญไขมัน</li>
+</ul>
+
+            <div class="product-actions">
+                <div class="quantity-controls">
+                    <button class="qty-btn minus" onclick="updateQuantity('jump-rope', -1)">-</button>
+                    <span class="quantity" id="jump-rope-qty">0</span>
+                    <button class="qty-btn plus" onclick="updateQuantity('jump-rope', 1)">+</button>
+                </div>
+                <button class="add-to-cart-btn" onclick="addToCart('jump-rope','เชือกกระโดด',350,'images/เชือกกระโดด.jpg')">
+                    เพิ่มลงตะกร้า
+                </button>
+            </div>
+        </div>
+    </article>
+
+    <!-- 6. บาร์โหน -->
+<article class="product-card" 
+    data-id="pull-up-bar"
+    data-name="บาร์โหนติดประตู"
+    data-price="300"
+    data-image="images/pullup-bar.jpg">
+
+    <div class="product-image">
+        <img src="images/pullup-bar.jpg" alt="บาร์โหนติดประตู" class="product-img">
+    </div>
+
+    <div class="product-info">
+        <h3 class="product-name">บาร์โหนติดประตู</h3>
+
+        <p class="product-description">
+            บาร์โหนสำหรับออกกำลังกายส่วนบน ติดตั้งง่าย ใช้งานในบ้านได้
+        </p>
+
+        <!-- ราคา -->
+        <div class="product-price">฿300</div>
+
+        <!-- วัสดุ -->
+        <ul class="product-detail">
+            <li><strong>วัสดุ:</strong> เหล็กกล้าคุณภาพสูง หุ้มโฟมกันลื่น</li>
+            <li><strong>วิธีใช้งาน:</strong> ติดตั้งกับวงกบประตูให้แน่น จับบาร์ด้วยมือทั้งสองข้าง แล้วออกแรงดึงตัวขึ้น</li>
+        </ul>
+
+        <div class="product-actions">
+            <div class="quantity-controls">
+                <button class="qty-btn minus" onclick="updateQuantity('pull-up-bar', -1)">-</button>
+                <span class="quantity" id="pull-up-bar-qty">0</span>
+                <button class="qty-btn plus" onclick="updateQuantity('pull-up-bar', 1)">+</button>
+            </div>
+
+            <button class="add-to-cart-btn"
+                onclick="addToCart('pull-up-bar','บาร์โหนติดประตู',1200,'images/pullup-bar.jpg')">
+                เพิ่มลงตะกร้า
+            </button>
+        </div>
+    </div>
+</article>
+
+
+</div>
+
+
+            <section class="menu-section">
+    <div class="section-header">
+        <h2 class="section-title">
+            <span class="section-icon">✨</span>
+            แฟชั่นและแอคเซสซอรี
+        </h2>
+        <p class="section-description">เครื่องแต่งกายและอุปกรณ์ออกกำลังกายคุณภาพสูง</p>
+    </div>
+
+    <div class="product-grid six-cols">
+
+        <!-- เสื้อกีฬาแขนสั้น -->
+        <article class="product-card">
+            <div class="product-image">
+                <img src="./images/black-sport-shirt.jpg" alt="เสื้อกีฬาแขนสั้น สีดำ" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">เสื้อกีฬาแขนสั้น สีดำ</h3>
+                <p class="product-description">
+                    วัสดุ: โพลีเอสเตอร์ 100%<br>
+                    คุณสมบัติ: แห้งไว ระบายอากาศดี ไม่อับชื้น<br>
+                    เหมาะสำหรับ: ฟิตเนส และออกกำลังกายทั่วไป<br>
+                    ขนาดไซส์: S / M / L / XL
+                </p>
+                <div class="product-price">฿180</div>
+                <button class="add-to-cart-btn"
+                    onclick="addToCart('black-sport-shirt','เสื้อกีฬาแขนสั้น สีดำ',180,'./images/black-sport-shirt.jpg')">
+                    เพิ่มลงตะกร้า
+                </button>
+            </div>
+        </article>
+
+        <!-- เสื้อกล้าม -->
+        <article class="product-card">
+            <div class="product-image">
+                <img src="./images/tank-top.jpg" alt="เสื้อกล้าม สีขาว" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">เสื้อกล้าม สีขาว</h3>
+                <p class="product-description">
+                    วัสดุ: คอตตอนผสมโพลีเอสเตอร์<br>
+                    คุณสมบัติ: ผ้านุ่ม ใส่สบาย ไม่ระคายผิว<br>
+                    เหมาะสำหรับ: เวทเทรนนิ่ง<br>
+                    ขนาดไซส์: S / M / L / XL
+                </p>
+                <div class="product-price">฿120</div>
+                <button class="add-to-cart-btn"
+                    onclick="addToCart('tank-top','เสื้อกล้าม สีขาว',120,'./images/tank-top.jpg')">
+                    เพิ่มลงตะกร้า
+                </button>
+            </div>
+        </article>
+
+        <!-- กางเกงขาสั้น -->
+        <article class="product-card">
+            <div class="product-image">
+                <img src="./images/short-pants.jpg" alt="กางเกงออกกำลังกายขาสั้น" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">กางเกงออกกำลังกายขาสั้น</h3>
+                <p class="product-description">
+                    วัสดุ: ไมโครไฟเบอร์<br>
+                    คุณสมบัติ: ยืดหยุ่นสูง แห้งเร็ว น้ำหนักเบา<br>
+                    มีเชือกปรับระดับเอว<br>
+                    ขนาดไซส์: M / L / XL
+                </p>
+                <div class="product-price">฿120</div>
+                <button class="add-to-cart-btn"
+                    onclick="addToCart('short-pants','กางเกงออกกำลังกายขาสั้น',120,'./images/short-pants.jpg')">
+                    เพิ่มลงตะกร้า
+                </button>
+            </div>
+        </article>
+
+        <!-- สปอร์ตบรา -->
+        <article class="product-card">
+            <div class="product-image">
+                <img src="./images/sport-bra.jpg" alt="สปอร์ตบรา สีดำ" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">สปอร์ตบรา สีดำ</h3>
+                <p class="product-description">
+                    วัสดุ: ไนลอน + สแปนเด็กซ์<br>
+                    คุณสมบัติ: กระชับ รองรับแรงกระแทกสูง<br>
+                    เหมาะสำหรับ: ฟิตเนส โยคะ วิ่ง<br>
+                    ขนาดไซส์: S / M / L / XL
+                </p>
+                <div class="product-price">฿150</div>
+                <button class="add-to-cart-btn"
+                    onclick="addToCart('sport-bra','สปอร์ตบรา สีดำ',150,'./images/sport-bra.jpg')">
+                    เพิ่มลงตะกร้า
+                </button>
+            </div>
+        </article>
+
+        <!-- กางเกงขายาว ผู้หญิง -->
+        <article class="product-card">
+            <div class="product-image">
+                <img src="./images/women-long-pants.jpg" alt="กางเกงออกกำลังกายขายาว ผู้หญิง" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">กางเกงออกกำลังกายขายาว ผู้หญิง</h3>
+                <p class="product-description">
+                    วัสดุ: ผ้ายืด 4 ทิศทาง<br>
+                    คุณสมบัติ: กระชับ ไม่โปร่งแสง ใส่สบาย<br>
+                    เหมาะสำหรับ: ฟิตเนส และโยคะ<br>
+                    ขนาดไซส์: S / M / L
+                </p>
+                <div class="product-price">฿160</div>
+                <button class="add-to-cart-btn"
+                    onclick="addToCart('women-long-pants','กางเกงออกกำลังกายขายาว ผู้หญิง',160,'./images/women-long-pants.jpg')">
+                    เพิ่มลงตะกร้า
+                </button>
+            </div>
+        </article>
+
+        <!-- รองเท้าวิ่ง -->
+        <article class="product-card">
+            <div class="product-image">
+                <img src="images/running-shoes..webp" alt="รองเท้าวิ่ง" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">รองเท้าวิ่ง</h3>
+                <p class="product-description">
+                    วัสดุด้านบน: ผ้าตาข่าย (Mesh)<br>
+                    พื้นรองเท้า: โฟม EVA ลดแรงกระแทก<br>
+                    น้ำหนักเบา ระบายอากาศดี<br>
+                    ขนาดไซส์: 40 – 45
+                </p>
+                <div class="product-price">฿3500</div>
+                <button class="add-to-cart-btn"
+                    onclick="addToCart('running-shoes','รองเท้าวิ่ง',3500,'./images/running-shoes.webp')">
+                    เพิ่มลงตะกร้า
+                </button>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+</div>
+                   </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Homegym. สงวนลิขสิทธิ์.</p>
+        <p>โทร: 096-397-6557 | อีเมล: jookHomegym@gmail.com</p>
+    </div>
+    <script src="products.js"></script>
+</body>
+</html>

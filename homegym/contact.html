@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ติดต่อ - Homegym</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <!-- Header with Logo -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">💪🏋️‍♂️🏆</div>
+            <div class="logo-text">
+                <span class="logo-jazz">Home</span>
+                <span class="logo-kunl">gym</span>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="navigation">
+            <a href="index.html" class="nav-link">หน้าแรก</a>
+            <a href="products.html" class="nav-link">สินค้า</a>
+            <a href="workout.html" class="nav-link">สอนออกกำลังกาย</a>
+            <a href="contact.html" class="nav-link active">ติดต่อ</a>
+        </nav>
+</header>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">ติดต่อ สอบถาม</h1>
+                <p class="hero-subtitle">เรายินดีให้บริการและตอบคำถามทุกข้อสงสัย ❤️✨</p>
+                <div class="hero-decoration">
+                    <span class="decoration-line"></span>
+                    <span class="decoration-icon">📱</span>
+                    <span class="decoration-line"></span>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Contact Grid: Form & Map Side by Side -->
+
+        <!-- Contact & Reserve: 2 columns (centered, constrained width) -->
+        <section style="max-width:2000px;margin:0 auto;padding:0 20px;box-sizing:border-box;">
+          <div class="contact-reserve-row">
+        <!-- Contact Info Card (separated column) -->
+            <div class="contact-info-card">
+              <div class="card-header">
+                <i class="fas fa-map-marker-alt card-icon"></i>
+                <h2 class="card-title">ที่อยู่</h2>
+              </div>
+              <div class="contact-info">
+                <p>Homegym<br>
+                123/4 ถนนฟิตเนส แขวง145 เขตสร้างกล้าม ขอนแก่น 40000</p>
+                <p>เวลาเปิด: จ.-ส. 9:00 - 20:00 น. | อา. 14:00 - 18:00 น.</p>
+                <p><a href="https://www.google.com/maps" target="_blank" rel="noopener">ดูแผนที่บน Google Maps</a></p>
+              </div>
+              
+              <!-- ฝังแผนที่ (map image / iframe) -->
+              <div class="map-embed-wrapper" style="margin-top:18px;">
+                <!-- ใช้ iframe ของ Google Maps โดยชี้ไปยังพิกัดตัวอย่าง (กรุงเทพ) -->
+                <iframe class="google-map-iframe" src="https://maps.google.com/maps?q=13.7563,100.5018&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen style="width:500%;height:520px;min-height:420px;border: 0;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.45)"></iframe>
+                <p style="margin-top:8px;"><a href="https://www.google.com/maps/search/?api=1&query=13.7563,100.5018" target="_blank" rel="noopener">เปิดแผนที่ขนาดเต็มบน Google Maps</a></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Customer Reviews Section -->
+        <section class="reviews-section" aria-label="รีวิวจากลูกค้า" style="padding:34px 20px;background:linear-gradient(180deg,#f4f4fc, #f4f7fb);color:#f5e9d6;">
+          <div class="reviews-container" style="max-width:1100px;margin:0 auto;">
+            <h2 class="reviews-title" style="color:#000000;margin-bottom:14px;font-size:1.5rem">รีวิวจากลูกค้า</h2>
+            <p style="color:#3e3c36;margin-bottom:18px;">ความคิดเห็นจริงจากลูกค้าที่มาใช้บริการของเรา</p>
+
+            <div class="reviews-grid" id="reviewsGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;">
+              <article class="review-card" style="background:#1d1719;padding:14px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.6);">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <strong>คุณสมชาย</strong>
+                  <div style="color:#ffd86b">★★★★★</div>
+                </div>
+                <p style="color:#dcd6c8;margin:0 0 8px 0;">อุปกรณ์ดีมากครับ บริการประทับใจ</p>
+                <small style="color:#9b9b9b">20 เม.ย. 2568</small>
+              </article>
+
+              <article class="review-card" style="background:#1d1719;padding:14px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.6);">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <strong>คุณมะลิ</strong>
+                  <div style="color:#ffd86b">★★★★☆</div>
+                </div>
+                <p style="color:#dcd6c8;margin:0 0 8px 0;">สินค้ามีคุณภาพ แต่ราคาสูงไปนิด</p>
+                <small style="color:#9b9b9b">15 มี.ค. 2568</small>
+              </article>
+
+              <article class="review-card" style="background:#1d1719;padding:14px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.6);">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <strong>คุณปวีณา</strong>
+                  <div style="color:#ffd86b">★★★★★</div>
+                </div>
+                <p style="color:#dcd6c8;margin:0 0 8px 0;">ชอบร้านนี้มาก สถานที่สะอาด แนะนำสำหรับคนรักสุขภาพ</p>
+                <small style="color:#9b9b9b">01 ก.พ. 2568</small>
+              </article>
+            </div>
+
+            <div style="margin-top:18px;display:flex;gap:10px;align-items:center;justify-content:flex-end;">
+              <button id="writeReviewBtn" style="background:#52c2f5;color:#ffffff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer">เขียนรีวิว</button>
+            </div>
+
+            <!-- Inline simple review form (hidden until requested) -->
+            <form id="reviewForm" style="display:none;margin-top:16px;background:#161212;padding:12px;border-radius:10px;"> 
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+                <input id="reviewerName" placeholder="ชื่อของคุณ" style="flex:1;padding:8px;border-radius:6px;border:1px solid #333;background:#0f0f10;color:#f5e9d6">
+                <select id="reviewRating" style="width:130px;padding:8px;border-radius:6px;border:1px solid #333;background:#0f0f10;color:#f5e9d6">
+                  <option value="5">★★★★★ (5)</option>
+                  <option value="4">★★★★☆ (4)</option>
+                  <option value="3">★★★☆☆ (3)</option>
+                  <option value="2">★★☆☆☆ (2)</option>
+                  <option value="1">★☆☆☆☆ (1)</option>
+                </select>
+              </div>
+              <textarea id="reviewMessage" rows="3" placeholder="เขียนความคิดเห็นของคุณ..." style="width:100%;padding:8px;border-radius:6px;border:1px solid #333;background:#0f0f10;color:#f5e9d6"></textarea>
+              <div style="margin-top:8px;display:flex;gap:8px;justify-content:flex-end;">
+                <button type="button" id="submitReview" style="background:#00ffae;color:#111;border:none;padding:8px 12px;border-radius:8px;cursor:pointer">ส่งรีวิว</button>
+                <button type="button" id="cancelReview" style="background:transparent;color:#f5e9d6;border:1px solid #333;padding:8px 12px;border-radius:8px;cursor:pointer">ยกเลิก</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- Social + Newsletter Side by Side -->
+        <div class="footer-duo-row">
+            <section class="footer-duo-col social-section">
+                <div class="social-card">
+                    <h2 class="card-title main-title">ติดตามเรา</h6>
+                    <div class="social-links social-row">
+                        <a href="#" class="social-link social-circle facebook" title="Facebook">
+                            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" class="social-app-icon">
+                        </a>
+                        <a href="#" class="social-link social-circle instagram" title="Instagram">
+                            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" class="social-app-icon">
+                        </a>
+                        <a href="#" class="social-link social-circle line" title="Line">
+                            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/line.svg" alt="Line" class="social-app-icon">
+                        </a>
+                        <a href="#" class="social-link social-circle youtube" title="YouTube">
+                            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" class="social-app-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section class="footer-duo-col newsletter-section">
+                <div class="newsletter-card">
+                    <h2 class="card-title main-title">รับข่าวสารและโปรโมชั่น</h2>
+                    <p>สมัครรับข่าวสารเพื่อไม่พลาดโปรโมชั่นพิเศษและกิจกรรมที่น่าสนใจ</p>
+                    <form class="newsletter-form newsletter-inline">
+                        <input type="email" placeholder="ใส่อีเมลของคุณ" required>
+                        <button type="submit">สมัคร</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </footer>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Homegym. สงวนลิขสิทธิ์.</p>
+        <p>โทร: 096-397-6557 | อีเมล: jookHomegym@gmail.com</p>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h3>ส่งข้อความสำเร็จ!</h3>
+            </div>
+            <p>ขอบคุณที่ติดต่อเรา เราจะตอบกลับโดยเร็วที่สุด</p>
+            <button class="modal-btn" onclick="closeSuccessModal()">ตกลง</button>
+        </div>
+    </div>
+
+    <script src="contact.js"></script>
+    <script>
+// Newsletter submit effect
+const newsletterForm = document.querySelector('.newsletter-form');
+if(newsletterForm){
+  newsletterForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const btn = newsletterForm.querySelector('button');
+    btn.classList.add('active');
+    setTimeout(()=>btn.classList.remove('active'), 400);
+    // Show success modal or toast here if needed
+  });
+}
+// Fade-in main-title on load
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('.main-title').forEach(el=>{
+    el.style.opacity = '1';
+  });
+});
+
+// Simple client-side review form behavior: append review to grid
+(function(){
+  const writeBtn = document.getElementById('writeReviewBtn');
+  const form = document.getElementById('reviewForm');
+  const submit = document.getElementById('submitReview');
+  const cancel = document.getElementById('cancelReview');
+  const grid = document.getElementById('reviewsGrid');
+  writeBtn && writeBtn.addEventListener('click', ()=>{ form.style.display = form.style.display === 'none' ? 'block' : 'none'; form.scrollIntoView({behavior:'smooth'}); });
+  cancel && cancel.addEventListener('click', ()=>{ form.style.display='none'; });
+  submit && submit.addEventListener('click', ()=>{
+    const name = document.getElementById('reviewerName').value.trim() || 'ลูกค้าที่รัก';
+    const rating = Number(document.getElementById('reviewRating').value || 5);
+    const msg = document.getElementById('reviewMessage').value.trim() || '';
+    const star = '★'.repeat(rating) + '☆'.repeat(Math.max(0,5-rating));
+    const card = document.createElement('article');
+    card.className = 'review-card';
+    card.style.cssText = 'background:#1d1719;padding:14px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.6);';
+    const date = new Date().toLocaleDateString('th-TH');
+    card.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><strong>${escapeHtml(name)}</strong><div style="color:#ffd86b">${star}</div></div><p style="color:#dcd6c8;margin:0 0 8px 0;">${escapeHtml(msg)}</p><small style="color:#9b9b9b">${date}</small>`;
+    grid.insertBefore(card, grid.firstChild);
+    form.style.display='none';
+    document.getElementById('reviewerName').value='';
+    document.getElementById('reviewMessage').value='';
+  });
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c])); }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายละเอียดคำสั่งซื้อ - Homegym</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="products.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">💪🏋️‍♂️🏆</div>
+            <div class="logo-text">
+                <span class="logo-jazz">Home</span>
+                <span class="logo-kunl">gym</span>
+            </div>
+        </div>
+        <nav class="navigation">
+            <a href="index.html" class="nav-link">หน้าแรก</a>
+            <a href="products.html" class="nav-link">สินค้า</a>
+            <a href="contact.html" class="nav-link">ติดต่อ</a>
+        </nav>
+    </header>
+    <main class="main-content order-details-page">
+        <section class="order-details-section">
+            <div class="order-details-container card-style">
+                <div class="order-details-header">
+                    <div class="order-details-icon">🎉</div>
+                    <h1 class="order-details-title">สรุปรายละเอียดคำสั่งซื้อ</h1>
+                </div>
+                <div class="order-details-summary-grid">
+                    <div class="order-details-summary-item">
+                        <span class="order-details-label">เลขที่คำสั่งซื้อ</span>
+                        <span class="order-details-value highlight" id="orderNumberText">HG-2024-001</span>
+                    </div>
+                    <div class="order-details-summary-item">
+                        <span class="order-details-label">วันที่สั่งซื้อ</span>
+                        <span class="order-details-value" id="orderDateText">28/08/2025</span>
+                    </div>
+                    <div class="order-details-summary-item">
+                        <span class="order-details-label">ชื่อผู้รับ</span>
+                        <span class="order-details-value" id="customerNameText">-</span>
+                    </div>
+                    <div class="order-details-summary-item">
+                        <span class="order-details-label">เบอร์โทรศัพท์</span>
+                        <span class="order-details-value" id="customerPhoneText">-</span>
+                    </div>
+                    <div class="order-details-summary-item wide">
+                        <span class="order-details-label">ที่อยู่จัดส่ง</span>
+                        <span class="order-details-value" id="deliveryAddressText">-</span>
+                    </div>
+                    <div class="order-details-summary-item">
+                        <span class="order-details-label">วิธีชำระเงิน</span>
+                        <span class="order-details-value" id="paymentMethodText">-</span>
+                    </div>
+                </div>
+                <h2 class="order-details-subtitle">🛒 รายการสินค้า</h2>
+                <div class="order-details-table-wrapper">
+                    <table class="order-details-table">
+                        <thead>
+                            <tr>
+                                <th>สินค้า</th>
+                                <th>จำนวน</th>
+                                <th>ราคาต่อหน่วย</th>
+                                <th>ราคารวม</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderItemsTable">
+                            <!-- Order items will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="order-details-total-box">
+                    <div class="order-details-row">
+                        <span class="order-details-label">ราคาสินค้ารวม</span>
+                        <span class="order-details-value" id="orderSubtotal">฿0</span>
+                    </div>
+                    <div class="order-details-row">
+                        <span class="order-details-label">ค่าจัดส่ง</span>
+                        <span class="order-details-value" id="orderShipping">฿50</span>
+                    </div>
+                    <div class="order-details-row total">
+                        <span class="order-details-label">รวมทั้งหมด</span>
+                        <span class="order-details-value highlight" id="orderTotal">฿0</span>
+                    </div>
+                </div>
+                <div class="order-details-actions">
+                    <a href="products.html" class="order-details-btn">← กลับไปเลือกสินค้า</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="order-details.js"></script>
+</html>
